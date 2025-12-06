@@ -1,0 +1,45 @@
+# =========================
+# macOS
+# =========================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Thumbnails
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.Trashes
+
+# =========================
+# Windows
+# =========================
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Folder config
+Desktop.ini
+
+# Recycle Bin
+$RECYCLE.BIN/
+
+# Windows installers
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# =========================
+# General OS junk
+# =========================
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+
