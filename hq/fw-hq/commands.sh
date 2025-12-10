@@ -12,4 +12,10 @@ systemctl enable nftables.service
 echo "NTP=ts1.univie.ac.at" >> /etc/systemd/timesyncd.conf
 systemctl restart systemd-timesyncd.service
 
+# Copy the sysctl.conf file to /etc/sysctl.conf
+# Apply the changes
+sysctl -p
 
+# Copy the nftables.conf file to /etc/nftables.conf
+# Apply the changes
+nft -f /etc/nftables.sh
