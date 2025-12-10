@@ -7,3 +7,6 @@ sysctl -p
 systemctl start nftables.service
 #ensures nftables is started after reboot
 systemctl enable nftables.service
+
+#apply config
+nft -f /etc/nftables.conf
