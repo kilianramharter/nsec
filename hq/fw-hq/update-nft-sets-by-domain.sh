@@ -25,7 +25,7 @@ while read -r HOST SET; do
     continue
   fi
 
-  ELEMS=$(echo "$IPS" | paste -sd "" -)
+  ELEMS=$(echo "$IPS" | paste -sd "," -)
 
   echo "$(date): Updating $SET (for $HOST) → { $ELEMS }"
 
