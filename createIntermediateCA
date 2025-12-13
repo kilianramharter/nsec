@@ -9,7 +9,7 @@ chmod 700 private
 touch index.txt
 echo 1000 > serial
 echo 1000 > $path/crlnumber
-cp /root/ca/intermediate-squid/openssl.cnf $path
+wget -O $path/openssl.cnf https://jamielinux.com/docs/openssl-certificate-authority/_downloads/intermediate-config.txt 
 cd /root/ca
 openssl genrsa -aes256 \
       -out $path/private/intermediate.key.pem 4096
