@@ -1,0 +1,32 @@
+#!/bin/bash
+
+path=/root/ca/intermediate-openvpn
+
+mkdir $path
+cd $path
+mkdir certs crl csr newcerts private
+chmod 700 private
+touch index.txt
+echo 1000 > serial
+echo 1000 > $path/crlnumber
+cp /root/ca/intermediate-squid/openssl.cnf $path
+cd /root/ca
+openssl genrsa -aes256 \
+      -out $path/private/intermediate.key.pem 4096
+      
+chmod 400 $path/private/intermediate.key.pem
+cd /root/ca
+openssl req -config $path/openssl.cnf -new -sha256 \
+      -key $path/private/intermediate.key.pem \
+      -out $path/csr/intermediate.csr.pem
+
+cd /root/ca
+openssl ca -config openssl.cnf -extensions v3_intermediate_ca \
+      -days 3650 -notext -md sha256 \
+      -in $path/csr/intermediate.csr.pem \
+      -out $path/certs/intermediate.cert.pem
+
+chmod 444 $path/certs/intermediate.cert.pem
+cat $path/certs/intermediate.cert.pem \
+      certs/ca.cert.pem > $path/certs/ca-chain.cert.pem
+chmod 444 $path/certs/ca-chain.cert.pem
